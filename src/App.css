@@ -49,7 +49,6 @@
   justify-content: space-between;
   gap: 10px;
   width: 100%;
-
   border-radius: 15px;
 }
 .card_main {
@@ -57,17 +56,15 @@
   padding: 10px 20px 10px 20px;
   align-items: center;
   cursor: pointer;
-
   justify-content: space-between;
   gap: 0px;
   background-color: rgba(199, 199, 199, 0.263);
-
   border-radius: 15px;
 }
 .card_main h6 {
   margin: 0;
   text-align: start;
-  color: gray;
+  color: black;
   width: 100%;
   font-size: 12px;
 }
@@ -188,7 +185,7 @@
   transform: scale(1.1);
 }
 
-.card:hover {
+.card_main:hover {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 

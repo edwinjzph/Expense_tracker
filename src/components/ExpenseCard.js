@@ -18,10 +18,10 @@ function ExpenseCard({ data, id }) {
           <div>
             <h3>{truncate(data?.expenseName, 16)}</h3>
             <h6 style={{ color: "gray" }}>
-              {moment(data?.date, "DDMMYY").fromNow()}
+              {moment(data?.date, "DD-MM-YYYY").fromNow()}
             </h6>
             <h6 style={{ color: "gray" }}>
-              {moment(data?.date, "DDMMYY").format().slice(0, 10)}
+              {moment(data?.date, "DD-MM-YYYY").format("YYYY-MM-DD")}
             </h6>
           </div>
         </div>
