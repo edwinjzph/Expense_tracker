@@ -6,22 +6,31 @@ function ExpenseCard({ data, id }) {
   }
 
   return (
-    <div className="card" id={id}>
-      <div className="card_sub">
-        <div className="cate-cardicon  icon6">
-          <i className="fa-solid fa-mug-hot" />
+    <div
+      className="card_main"
+      style={{ display: "flex", flexDirection: "column" }}
+    >
+      <div className="card" id={id}>
+        <div className="card_sub">
+          <div className="cate-cardicon  icon6">
+            <i className="fa-solid fa-mug-hot" />
+          </div>
+          <div>
+            <h3>{truncate(data?.expenseName, 16)}</h3>
+            <h6 style={{ color: "gray" }}>
+              {moment(data?.date, "DDMMYY").fromNow()}
+            </h6>
+            <h6 style={{ color: "gray" }}>
+              {moment(data?.date, "DDMMYY").format().slice(0, 10)}
+            </h6>
+          </div>
         </div>
-        <div>
-          <h3>{truncate(data?.expenseName, 16)}</h3>
-          <h6 style={{ color: "gray" }}>
-            {moment(data?.date, "DDMMYY").fromNow()}
-          </h6>
+        <div className="card_sub2">
+          <h3>{data?.amount}</h3>
+          <i className="fa-solid fa-trash" />
         </div>
       </div>
-      <div className="card_sub2">
-        <h3>{data?.amount}</h3>
-        <i className="fa-solid fa-trash" />
-      </div>
+      <h6>{data?.description}</h6>
     </div>
   );
 }
