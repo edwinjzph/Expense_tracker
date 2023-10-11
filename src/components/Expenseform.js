@@ -1,6 +1,6 @@
 import React from "react";
 
-function Expenseform() {
+function Expenseform({ setOpenform }) {
   return (
     <div id="myForm" className="input-div">
       <div
@@ -15,6 +15,9 @@ function Expenseform() {
         <i
           style={{ fontSize: 23, cursor: "pointer" }}
           className="fa-solid fa-xmark"
+          onClick={() => {
+            setOpenform(false);
+          }}
         />
       </div>
       <input type="text" placeholder="Expense Name" />

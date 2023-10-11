@@ -63,7 +63,7 @@ function App() {
     <div className="App">
       <Header />
       <Addexpense setOpenform={setOpenform} />
-      {openform && <Expenseform />}
+      {openform && <Expenseform setOpenform={setOpenform} />}
       <Categories totalexpense={totalexpense} />
       <Expenseday maxday={maxday} />
       <ExpenseLayout sampledata={sampledata} />
