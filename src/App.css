@@ -185,8 +185,33 @@
   transform: scale(1.1);
 }
 
+.expense_card {
+  width: 68%;
+  margin-top: 20px !important;
+  border-radius: 10px;
+
+  margin: auto;
+  padding: 17px 18px 17px 18px;
+  text-align: start;
+  background: rgb(196, 126, 240);
+  background: linear-gradient(
+    90deg,
+    rgba(196, 126, 240, 1) 0%,
+    rgba(161, 27, 245, 1) 35%,
+    rgba(125, 39, 177, 1) 100%
+  );
+}
+.expense_card h5 {
+  color: white;
+  margin: 0;
+  font-size: 13px;
+}
+
 .card_main:hover {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.expenses h3 {
+  margin: 0;
 }
 
 .plus {
@@ -260,6 +285,12 @@
   .plus {
     bottom: 50px;
     right: 20px;
+  }
+  .expense_card {
+    width: 85%;
+  }
+  .expense_card h5 {
+    font-size: 12px;
   }
   .input-div input {
     margin-top: 10px;
