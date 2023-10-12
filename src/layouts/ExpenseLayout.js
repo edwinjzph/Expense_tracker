@@ -1,16 +1,24 @@
 import React from "react";
 import ExpenseCard from "../components/ExpenseCard";
 
-function ExpenseLayout({ sampledata }) {
-  console.log(sampledata);
-
+function ExpenseLayout({ sampledata, setExpense }) {
   return (
     <div className="card-row">
-      <h5 style={{ color: "gray" }}>Today</h5>
       {sampledata &&
-        sampledata.map((value, index) => {
-          return <ExpenseCard data={value} key={index} />;
-        })}
+        sampledata
+          .slice(0)
+          .reverse()
+          .map((value, index) => {
+            return (
+              <ExpenseCard
+                data={value}
+                key={index}
+                setExpense={setExpense}
+                sampledata={sampledata}
+                index={index}
+              />
+            );
+          })}
     </div>
   );
 }

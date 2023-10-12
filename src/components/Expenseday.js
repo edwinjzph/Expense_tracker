@@ -1,3 +1,4 @@
+import moment from "moment";
 import React from "react";
 
 function Expenseday({ maxday }) {
@@ -5,7 +6,9 @@ function Expenseday({ maxday }) {
     <div style={{ width: "100%" }}>
       <div className="expense_card">
         <h5>
-          {`Uncover the most popular date for purchases, with a total spend of ${maxday?.dateWithMaxAmount} on $${maxday?.maxAmount}.`}
+          {`Uncover the most popular date for purchases, with a total spend of ${moment(
+            parseInt(maxday?.dateWithMaxAmount)
+          ).format("YYYY-DD-MM")} on $${maxday?.maxAmount}.`}
         </h5>
         <h5
           style={{ color: "white", marginTop: "4px", opacity: ".7" }}

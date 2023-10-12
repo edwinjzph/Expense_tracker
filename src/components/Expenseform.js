@@ -1,6 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+function Expenseform({ setOpenform, setExpense }) {
+  const [expensedata, setExpensedata] = useState({
+    expenseName: "",
+    date: "",
+    amount: 0,
+    description: "",
+    currency: "",
+  });
 
-function Expenseform({ setOpenform }) {
+  const handleChanage = (e) => {
+    setExpensedata((prevState) => {
+      return { ...prevState, [e.target.name]: e.target.value };
+    });
+  };
+
+  const handleSubmit = () => {
+    setExpense((prevState) => {
+      return [...prevState, { ...expensedata, id: uuidv4() }];
+    });
+  };
+
   return (
     <div id="myForm" className="input-div">
       <div
@@ -20,13 +40,54 @@ function Expenseform({ setOpenform }) {
           }}
         />
       </div>
-      <input type="text" placeholder="Expense Name" />
-      <input type="text" placeholder="Date of Expense" />
-      <input type="text" placeholder="Expense Amount" />
+      <input
+        type="text"
+        placeholder="Expense Name"
+        name="expenseName"
+        onChange={handleChanage}
+        value={expensedata.expenseName}
+      />
+      <input
+        type="date"
+        placeholder="Date of Expense"
+        name="date"
+        onChange={handleChanage}
+        value={expensedata.date}
+      />
+      <input
+        type="textarea"
+        placeholder="Description"
+        name="description"
+        onChange={handleChanage}
+        value={expensedata.description}
+      />
+      <div style={{ display: "flex", gap: "7px", width: "98%" }}>
+        <input
+          type="text"
+          placeholder="Currency"
+          name="currency"
+          style={{ flexBasis: "20%" }}
+          onChange={handleChanage}
+          value={expensedata.currency}
+        />
+        <input
+          type="number"
+          placeholder="Expense Amount"
+          name="amount"
+          onChange={handleChanage}
+          value={expensedata.amount}
+        />
+      </div>
+
       <button
+        onClick={() => {
+          setOpenform(false);
+          handleSubmit();
+        }}
         style={{
-          padding: "8px 10px 8px 10px",
+          padding: "13px 10px 13px 10px",
           border: "none",
+          cursor: "pointer",
           backgroundColor: "rgb(217, 0, 255)",
           color: "white",
           borderRadius: 10,
