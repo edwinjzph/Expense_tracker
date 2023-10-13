@@ -264,7 +264,7 @@
   margin: 0;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 980px) {
   .input-div {
     position: fixed;
     gap: 10px;
@@ -284,6 +284,9 @@
   .plus {
     bottom: 50px;
     right: 20px;
+  }
+  .box {
+    width: 90% !important;
   }
   .expense_card {
     width: 85%;

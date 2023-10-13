@@ -8,6 +8,11 @@ import Addexpense from "./components/Addexpense";
 import Expenseform from "./components/Expenseform";
 import Expenseday from "./components/Expenseday";
 import { getCoordinates, getWeather } from "./services/location";
+import Weather from "./components/Weather";
+import getTotalexpense from "./helpers.js/getTotalexpense";
+import getExpensiveday from "./helpers.js/getExpensiveday";
+
+
 
 function App() {
   const [expense, setExpense] = useState(sampledata);
@@ -18,41 +23,14 @@ function App() {
   const [weather, setWeather] = useState();
 
   useEffect(() => {
-    const getTotalexpense = () => {
-      let sum = 0;
-      expense.forEach((value) => {
-        sum += parseInt(value.amount);
-      });
-      return sum;
-    };
-
-    const getExpensiveday = () => {
-      const result = Object.groupBy(expense, ({ date }) => date);
-      const newresult = {};
-      Object.entries(result).forEach((element) => {
-        let sum = 0;
-        element[1].forEach((value) => {
-          sum += parseInt(value.amount);
-        });
-        newresult[element[0]] = sum;
-      });
-      let maxAmount = 0;
-      let dateWithMaxAmount = "";
-      Object.entries(newresult).forEach((value) => {
-        if (maxAmount < value[1]) {
-          maxAmount = value[1];
-          dateWithMaxAmount = value[0];
-        }
-      });
-      return { dateWithMaxAmount, maxAmount };
-    };
-    setMaxday(getExpensiveday());
-    setTotalexpense(getTotalexpense());
+    setTotalexpense(getTotalexpense(expense))
+    setMaxday(getExpensiveday(expense))
   }, [expense]);
 
   useEffect(() => {
     (async () => {
       getCoordinates(async location => {
+        setLocation(location)
         const weather = await getWeather(location)
         setWeather(weather)
       });
@@ -61,6 +39,7 @@ function App() {
 
   return (
     <div className="App">
+      <Weather location={location} weather={weather} />
       <Header />
       <Addexpense setOpenform={setOpenform} />
       {openform && (
